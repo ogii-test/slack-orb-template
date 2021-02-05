@@ -25,18 +25,10 @@ jobs:
       - checkout
       - run:
           command: >-
-            echo 'export MY_ORB_TEMPLATE_PASS=$(cat
-            ./slack_template/tests_passed.json)' >> $BASH_ENV
-          name: >-
-            Store the content of the success.json template into a custom
-            environment variable
+            echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
       - run:
           command: >-
-            echo 'export MY_ORB_TEMPLATE_FAIL=$(cat
-            ./slack_template/tests_failed.json)' >> $BASH_ENV
-          name: >-
-            Store the content of the failure.json template into a custom
-            environment variable
+            echo 'export MY_ORB_TEMPLATE_FAIL=$(jq .fail ./slack_template/templates.json)' >> $BASH_ENV
       - slack/notify:
           channel: slacktest
           event: pass
