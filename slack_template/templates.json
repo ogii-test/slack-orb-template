@@ -6,7 +6,7 @@
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "failed tests!!"
+                    "text": "The tests have failed"
                 }
             }
         ]
@@ -18,7 +18,7 @@
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "passed tests!!"
+                    "text": "The tests have passed"
                 }
             }
         ]
