@@ -5,24 +5,39 @@ orbs:
 
 jobs:
   job1:
+    context: slack-secrets
     docker:
       - image: 'cimg/base:2020.01'  
     steps:
       - run:
           command: |
             exit 1
+            - checkout
+      - run:
+          command: |
+            echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
+            echo "$MY_ORB_TEMPLATE_PASS"
+      - run:
+          command: |
+            echo 'export MY_ORB_TEMPLATE_FAIL=$(jq .fail ./slack_template/templates.json)' >> $BASH_ENV
+            echo "$MY_ORB_TEMPLATE_FAIL"
+      - slack/notify:
+          channel: slacktest
+          event: pass
+          template: MY_ORB_TEMPLATE_PASS
+      - slack/notify:
+          channel: slacktest
+          event: fail
+          template: MY_ORB_TEMPLATE_FAIL
   job2:
+    context: slack-secrets
     docker:
       - image: 'cimg/base:2020.01' 
     steps:
       - run:
           command: |
-            exit 1
-  notify:
-    docker:
-      - image: 'cimg/base:2020.01' 
-    steps:
-      - checkout
+            exit 0
+            - checkout
       - run:
           command: |
             echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
@@ -45,5 +60,3 @@ workflows:
     jobs:
       - job1
       - job2
-      - notify:
-          context: slack-secrets
