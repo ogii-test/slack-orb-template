@@ -5,7 +5,6 @@ orbs:
 
 jobs:
   job1:
-    context: slack-secrets
     docker:
       - image: 'cimg/base:2020.01'  
     steps:
@@ -30,7 +29,6 @@ jobs:
           event: fail
           template: MY_ORB_TEMPLATE_FAIL
   job2:
-    context: slack-secrets
     docker:
       - image: 'cimg/base:2020.01' 
     steps:
@@ -59,4 +57,6 @@ workflows:
   send-notification:
     jobs:
       - job1
+          context: slack-secrets
       - job2
+          context: slack-secrets
