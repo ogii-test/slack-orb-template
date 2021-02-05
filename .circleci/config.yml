@@ -17,7 +17,7 @@ jobs:
     steps:
       - run:
           command: |
-            exit 0
+            exit 1
   notify:
     docker:
       - image: 'cimg/base:2020.01' 
