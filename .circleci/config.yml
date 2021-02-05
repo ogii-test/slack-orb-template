@@ -8,10 +8,10 @@ jobs:
     docker:
       - image: 'cimg/base:2020.01'  
     steps:
+      - checkout
       - run:
           command: |
             exit 1
-            - checkout
       - run:
           command: |
             echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
@@ -32,6 +32,7 @@ jobs:
     docker:
       - image: 'cimg/base:2020.01' 
     steps:
+      - checkout
       - run:
           command: |
             exit 0
