@@ -44,6 +44,6 @@ workflows:
   send-notification:
     jobs:
       - job1
+      - job2
       - notify:
           context: slack-secrets
-      - job2
