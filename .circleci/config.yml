@@ -26,11 +26,11 @@ jobs:
       - run:
           command: |
             echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
-            echo ${MY_ORB_TEMPLATE_PASS}
+            echo '$MY_ORB_TEMPLATE_PASS'
       - run:
           command: |
             echo 'export MY_ORB_TEMPLATE_FAIL=$(jq .fail ./slack_template/templates.json)' >> $BASH_ENV
-            echo ${MY_ORB_TEMPLATE_FAIL}
+            echo '$MY_ORB_TEMPLATE_FAIL'
       - slack/notify:
           channel: slacktest
           event: pass
