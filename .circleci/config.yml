@@ -61,5 +61,8 @@ workflows:
     jobs:
       - job1:
           context: slack-secrets
+          filters:
+            branches:
+              only: /test.*/
       - job2:
           context: slack-secrets
