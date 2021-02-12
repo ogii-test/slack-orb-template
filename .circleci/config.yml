@@ -10,9 +10,6 @@ jobs:
     docker:
       - image: 'cimg/base:2020.01'  
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "07:97:3c:8b:2a:33:45:41:85:93:0e:6f:8c:7e:e2:76"
       - checkout
       - run:
           command: |
