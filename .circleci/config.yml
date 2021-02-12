@@ -35,8 +35,8 @@ jobs:
       - image: 'cimg/base:2020.01' 
     steps:
       - add_ssh_keys:
-        fingerprints:
-          - "78:32:ef:99:39:64:56:ea:8e:73:82:9f:2a:70:4d:3f"
+          fingerprints:
+            - "78:32:ef:99:39:64:56:ea:8e:73:82:9f:2a:70:4d:3f"
       - checkout
       - run:
           command: |
