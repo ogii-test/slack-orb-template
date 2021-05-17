@@ -66,10 +66,10 @@ jobs:
 workflows:
   send-notification:
     jobs:
-      - job1:
+      - job2:
           context: slack-secrets
           filters:
             branches:
               only: /test.*/
-      - job2:
+      - job1:
           context: slack-secrets
