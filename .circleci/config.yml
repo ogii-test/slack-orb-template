@@ -13,9 +13,6 @@ jobs:
       #- checkout
       - run:
           command: |
-            exit 1
-      - run:
-          command: |
             echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
             echo "$MY_ORB_TEMPLATE_PASS"
       - run:
