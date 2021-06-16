@@ -20,11 +20,11 @@ jobs:
       - slack/notify:
           channel: slacktest
           event: pass
-          template: $MY_ORB_TEMPLATE_PASS
+          template: MY_ORB_TEMPLATE_PASS
       - slack/notify:
           channel: slacktest
           event: fail
-          template: $MY_ORB_TEMPLATE_FAIL
+          template: MY_ORB_TEMPLATE_FAIL
           
 workflows:
   send-notification:
