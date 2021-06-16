@@ -22,11 +22,11 @@ jobs:
       - slack/notify:
           channel: slacktest
           event: pass
-          template: $MY_ORB_TEMPLATE_PASS
+          template: testjson #$MY_ORB_TEMPLATE_PASS
       - slack/notify:
           channel: slacktest
           event: fail
-          template: $MY_ORB_TEMPLATE_FAIL
+          template: testjson #$MY_ORB_TEMPLATE_FAIL
   job2:
     docker:
       - image: 'cimg/base:2020.01' 
