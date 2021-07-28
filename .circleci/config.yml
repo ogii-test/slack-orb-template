@@ -47,12 +47,12 @@ jobs:
           channel: slacktest
           event: pass
           #template: MY_ORB_TEMPLATE_PASS
-          <<: *slacktest
+          <<: *template
       - slack/notify:
           channel: slacktest
           event: fail
           #template: MY_ORB_TEMPLATE_FAIL
-          <<: *slacktest
+          <<: *template
           
 workflows:
   send-notification:
