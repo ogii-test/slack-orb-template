@@ -17,7 +17,7 @@ parameters:
     type: string
     default: ''
   
-template: &template >
+template: &template
       {
         "attachments": [{
           "color": "#5CBB8B",
