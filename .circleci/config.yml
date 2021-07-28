@@ -2,6 +2,19 @@ version: '2.1'
  
 orbs:
   slack: circleci/slack@4.2.1
+  
+test: &slacktest
+  template: |
+      {
+        "attachments": [{
+          "color": "#5CBB8B",
+          "pretext": "Build #$CIRCLE_BUILD_NUM of *$CIRCLE_PROJECT_REPONAME* project has passed",
+          "title": "$CIRCLE_STAGE Results",
+          "title_link": "$CIRCLE_BUILD_URL",
+          "footer": "<< pipeline.parameters.authorName >> | $CIRCLE_BRANCH | ${CIRCLE_SHA1:1:6}",
+          "footer_icon": "https://github.com/<< pipeline.parameters.authorUserName >>.png?size=32"
+        }]
+      }
  
 jobs:
   job1:
@@ -24,7 +37,8 @@ jobs:
       - slack/notify:
           channel: slacktest
           event: fail
-          template: MY_ORB_TEMPLATE_FAIL
+          #template: MY_ORB_TEMPLATE_FAIL
+          *slacktest
           
 workflows:
   send-notification:
