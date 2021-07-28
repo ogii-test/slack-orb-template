@@ -38,7 +38,7 @@ jobs:
           channel: slacktest
           event: fail
           #template: MY_ORB_TEMPLATE_FAIL
-          template: *slacktest
+          <<: *slacktest
           
 workflows:
   send-notification:
