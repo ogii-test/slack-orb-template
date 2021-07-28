@@ -54,7 +54,8 @@ jobs:
           event: fail
           template: MY_ORB_TEMPLATE_FAIL
           #<<: *template
-      - run: *template
+      - run:
+          command: *template
           
 workflows:
   send-notification:
