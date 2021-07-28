@@ -19,7 +19,7 @@ parameters:
   
 slack: &template 
   template: |
-    "{
+   echo "{
       "attachments": [{
         "color": "#5CBB8B",
         "pretext": "Build #$CIRCLE_BUILD_NUM of *$CIRCLE_PROJECT_REPONAME* project has passed",
@@ -47,13 +47,14 @@ jobs:
       - slack/notify:
           channel: slacktest
           event: pass
-          #template: MY_ORB_TEMPLATE_PASS
-          <<: *template
+          template: MY_ORB_TEMPLATE_PASS
+         # <<: *template
       - slack/notify:
           channel: slacktest
           event: fail
-          #template: MY_ORB_TEMPLATE_FAIL
-          <<: *template
+          template: MY_ORB_TEMPLATE_FAIL
+          #<<: *template
+      - run: *template
           
 workflows:
   send-notification:
