@@ -19,7 +19,7 @@ parameters:
   
 slack: &template 
   template: |
-    {
+    "{
       "attachments": [{
         "color": "#5CBB8B",
         "pretext": "Build #$CIRCLE_BUILD_NUM of *$CIRCLE_PROJECT_REPONAME* project has passed",
@@ -28,7 +28,7 @@ slack: &template
         "footer": "<< pipeline.parameters.authorName >> | $CIRCLE_BRANCH | ${CIRCLE_SHA1:1:6}",
         "footer_icon": "https://github.com/<< pipeline.parameters.authorUserName >>.png?size=32"
       }]
-    }
+    }"
  
 jobs:
   job1:
