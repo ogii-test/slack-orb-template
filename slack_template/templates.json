@@ -6,7 +6,7 @@
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "The tests have failed"
+                    "text": "The tests have failed << pipeline.git.branch >>"
                 }
             }
         ]
