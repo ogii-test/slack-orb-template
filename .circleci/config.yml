@@ -18,7 +18,7 @@ parameters:
     default: ''
   
 test: &slacktest
-  template: |
+  template: >
       {
         "attachments": [{
           "color": "#5CBB8B",
