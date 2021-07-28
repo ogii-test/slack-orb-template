@@ -47,7 +47,8 @@ jobs:
       - slack/notify:
           channel: slacktest
           event: pass
-          template: MY_ORB_TEMPLATE_PASS
+          #template: MY_ORB_TEMPLATE_PASS
+          <<: *slacktest
       - slack/notify:
           channel: slacktest
           event: fail
