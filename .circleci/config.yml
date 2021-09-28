@@ -24,12 +24,26 @@ jobs:
       - run: echo "$artifacts"
       - slack/notify:
           channel: slacktest
-          event: pass
+          event: fail
           template: MY_ORB_TEMPLATE_PASS
       - slack/notify:
           channel: slacktest
-          event: fail
-          template: MY_ORB_TEMPLATE_FAIL
+          event: pass
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "$artifacts",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
 
 workflows:
   send-notification:
