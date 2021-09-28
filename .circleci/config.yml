@@ -18,36 +18,36 @@ jobs:
           channel: slacktest
           event: always
           custom: |
-           {
-            "blocks": [
-             {
-              "type": "section",
-              "text": {
-               "type": "plain_text",
-               "text": "Your build has passed!",
-               "emoji": true
-              }
-             },
-             {
-              "type": "section",
-              "text": {
-               "type": "mrkdwn",
-               "text": "Click the button to download your test results."
-              },
-              "accessory": {
-               "type": "button",
-               "text": {
-                "type": "plain_text",
-                "text": "Download Artifacts",
-                "emoji": true
-               },
-               "value": "artifacts_url",
-               "url": "$ARTIFACTS_URL",
-               "action_id": "button-action"
-              }
-             }
-            ]
-          }
+            {
+              "blocks":[
+                {
+                  "type":"section",
+                  "text":{
+                    "type":"plain_text",
+                    "text":"Your build has passed!",
+                    "emoji":true
+                  }
+                },
+                {
+                  "type":"section",
+                  "text":{
+                    "type":"mrkdwn",
+                    "text":"Click the button to download your test results."
+                  },
+                  "accessory":{
+                    "type":"button",
+                    "text":{
+                      "type":"plain_text",
+                      "text":"Download Artifacts",
+                      "emoji":true
+                    },
+                    "value":"artifacts_url",
+                    "url":"$ARTIFACTS_URL",
+                    "action_id":"button-action"
+                  }
+                }
+              ]
+            }
 
 workflows:
   send-notification:
