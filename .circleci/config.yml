@@ -37,7 +37,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": $(echo $artifacts),
+                      "text": "dfgdfgdfgdfg",
                       "emoji": true
                     }
                   ]
