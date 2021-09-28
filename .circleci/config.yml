@@ -31,34 +31,34 @@ jobs:
           event: pass
           custom: |
             {
-              "blocks": [
+             "blocks":[
                 {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "Here is the button to download this build's artifact",
-                      "emoji": true
-                    }
-                  ]
+                   "type":"section",
+                   "fields":[
+                      {
+                         "type":"plain_text",
+                         "text":"Here is the button to download this build's artifact",
+                         "emoji":true
+                      }
+                   ]
                 },
                 {
-                  "type": "actions",
-                  "elements": [
+                   "type":"actions",
+                   "elements":[
                       {
-                          "type": "button",
-                          "text": {
-                              "type": "plain_text",
-                              "text": "Download Artifact",
-                              "emoji": true
-                          },
-                          "value": "view_job",
-                          "url": "$ARTIFACT_URL"
+                         "type":"button",
+                         "text":{
+                            "type":"plain_text",
+                            "text":"Download Artifact",
+                            "emoji":true
+                         },
+                         "value":"view_job",
+                         "url":"$ARTIFACT_URL"
                       }
-                  ]
-              }
-              ]
-            }
+                   ]
+                }
+             ]
+          }
 
 workflows:
   send-notification:
