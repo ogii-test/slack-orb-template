@@ -37,7 +37,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": "$artifacts",
+                      "text": $artifacts,
                       "emoji": true
                     }
                   ]
