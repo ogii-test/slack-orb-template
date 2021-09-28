@@ -16,7 +16,7 @@ jobs:
       - run: echo "$ARTIFACT_URL"
       - slack/notify:
           channel: slacktest
-          event: always
+          event: pass
           custom: |
             {
              "blocks":[
