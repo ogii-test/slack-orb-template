@@ -19,64 +19,35 @@ jobs:
           event: always
           custom: |
            {
-2
-    "blocks": [
-3
-        {
-4
-            "type": "section",
-5
-            "text": {
-6
+            "blocks": [
+             {
+              "type": "section",
+              "text": {
+               "type": "plain_text",
+               "text": "Your build has passed!",
+               "emoji": true
+              }
+             },
+             {
+              "type": "section",
+              "text": {
+               "type": "mrkdwn",
+               "text": "Click the button to download your test results."
+              },
+              "accessory": {
+               "type": "button",
+               "text": {
                 "type": "plain_text",
-7
-                "text": "Your build has passed!",
-8
+                "text": "Download Artifacts",
                 "emoji": true
-9
-            }
-10
-        },
-11
-        {
-12
-            "type": "section",
-13
-            "text": {
-14
-                "type": "mrkdwn",
-15
-                "text": "Click the button to download your test results."
-16
-            },
-17
-            "accessory": {
-18
-                "type": "button",
-19
-                "text": {
-20
-                    "type": "plain_text",
-21
-                    "text": "Download Artifacts",
-22
-                    "emoji": true
-23
-                },
-24
-                "value": "artifacts_url",
-25
-                "url": "$ARTIFACTS_URL",
-26
-                "action_id": "button-action"
-27
-            }
-28
-        }
-29
-    ]
-30
-}
+               },
+               "value": "artifacts_url",
+               "url": "$ARTIFACTS_URL",
+               "action_id": "button-action"
+              }
+             }
+            ]
+          }
 
 workflows:
   send-notification:
