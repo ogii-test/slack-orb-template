@@ -41,7 +41,22 @@ jobs:
                       "emoji": true
                     }
                   ]
-                }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                      {
+                          "type": "button",
+                          "text": {
+                              "type": "plain_text",
+                              "text": "View Job",
+                              "emoji": true
+                          },
+                          "value": "view_job",
+                          "url": "$ARTIFACT_URL"
+                      }
+                  ]
+              }
               ]
             }
 
