@@ -37,7 +37,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": $ARTIFACT_URL,
+                      "text": "$ARTIFACT_URL",
                       "emoji": true
                     }
                   ]
