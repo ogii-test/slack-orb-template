@@ -42,7 +42,7 @@ jobs:
                       "emoji": true
                     },
                     "value": "artifacts_url",
-                    "url": "https://www.google.com",
+                    "url": "$ARTIFACT_URL",
                     "action_id": "button-action"
                   }
                 }
