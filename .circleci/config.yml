@@ -21,7 +21,7 @@ jobs:
          command: |
           artifacts=$(curl -X GET https://circleci.com/api/v1.1/project/bitbucket/ispottv/qaautomationframework/1199/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
           echo "$artifacts" >> $BASH_ENV
-      - run: echo $artifacts
+      - run: echo "$artifacts"
       - slack/notify:
           channel: slacktest
           event: pass
