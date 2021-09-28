@@ -37,7 +37,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": "$ARTIFACT_URL",
+                      "text": "Here is the button to download this build's artifact",
                       "emoji": true
                     }
                   ]
@@ -49,7 +49,7 @@ jobs:
                           "type": "button",
                           "text": {
                               "type": "plain_text",
-                              "text": "View Job",
+                              "text": "Download Artifact",
                               "emoji": true
                           },
                           "value": "view_job",
