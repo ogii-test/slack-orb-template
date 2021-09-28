@@ -19,9 +19,9 @@ jobs:
             echo "$MY_ORB_TEMPLATE_FAIL"
       - run:
          command: |
-          artifacts_url=$(curl -X GET https://circleci.com/api/v1.1/project/bitbucket/ispottv/qaautomationframework/1199/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
-          echo "export artifacts=$artifacts_url" >> $BASH_ENV
-      - run: echo "$artifacts"
+          ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/bitbucket/ispottv/qaautomationframework/1199/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
+          echo "export ARTIFACT=$artifacts_url" >> $BASH_ENV
+      - run: echo "$ARTIFACT_URL"
       - slack/notify:
           channel: slacktest
           event: fail
@@ -37,7 +37,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": "dfgdfgdfgdfg",
+                      "text": $ARTIFACT_URL,
                       "emoji": true
                     }
                   ]
