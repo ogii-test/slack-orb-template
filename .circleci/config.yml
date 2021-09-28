@@ -3,20 +3,6 @@ version: '2.1'
 orbs:
   slack: circleci/slack@4.2.1
   
-parameters:
-  authorName:
-    description: 'The author of the PR'
-    type: string
-    default: 'Pocket Prep'
-  authorUserName:
-    description: 'The Github username of PR author'
-    type: string
-    default: 'pocket-prep'
-  targetBranch:
-    description: 'The branch we are merging INTO'
-    type: string
-    default: ''
-  
 slack: &template 
   template: |
    echo "{
@@ -33,7 +19,7 @@ slack: &template
 jobs:
   job1:
     docker:
-      - image: 'cimg/base:2020.01'  
+      - image: cimg/base:2020.01
     steps:
       - checkout
       - run:
