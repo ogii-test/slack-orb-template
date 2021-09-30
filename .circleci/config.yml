@@ -22,7 +22,7 @@ jobs:
          command: |
           #ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-template/2/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq 'try .[0].url catch "https://circleci.com"')
           ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-template/2/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url')
-          if if [[ -z ${ARTIFACT+x} ]]; then ARTIFACT=https://circleci.com; else echo "Valid Link";fi
+          if [[ -z ${ARTIFACT+x} ]]; then ARTIFACT=https://circleci.com; else echo "Valid Link";fi
           echo "$ARTIFACT"
           echo "export ARTIFACT_URL=$ARTIFACT" >> $BASH_ENV
       - run: echo "$ARTIFACT_URL"
