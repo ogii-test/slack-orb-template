@@ -20,7 +20,7 @@ jobs:
           destination: artifact-file
       - run:
          command: |
-          ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-tefmplate/$CIRCLE_BUILD_NUM/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq -c '.[0].url' && echo 0)
+          ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-tefmplate/$CIRCLE_BUILD_NUM/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url')
           if [ "${ARTIFACT:-}" ]; then echo "Valid Link"; else echo ARTIFACT="https://circleci.com";fi
           echo "export ARTIFACT_URL=$ARTIFACT" >> $BASH_ENV
       - run: echo "$ARTIFACT_URL"
