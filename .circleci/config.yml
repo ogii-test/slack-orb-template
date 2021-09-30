@@ -20,7 +20,7 @@ jobs:
           destination: artifact-file
       - run:
          command: |
-          ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-template/211/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
+          ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-template/212/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
           if [ -z "$ARTIFACT" ]; then echo "NULL"; fi
           echo "export ARTIFACT_URL=$ARTIFACT" >> $BASH_ENV
       - run: echo "$ARTIFACT_URL"
