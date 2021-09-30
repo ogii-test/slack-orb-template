@@ -15,13 +15,11 @@ jobs:
             echo "my artifact file" > /tmp/artifact-1;
             mkdir /tmp/artifacts;
             echo "my artifact files in a dir" > /tmp/artifacts/artifact-2;
-
       - store_artifacts:
           path: /tmp/artifact-1
           destination: artifact-file
       - run:
          command: |
-          #sleep 5s
           ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/github/ogii-test/slack-orb-template/$CIRCLE_BUILD_NUM/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
           echo "export ARTIFACT_URL=$ARTIFACT" >> $BASH_ENV
       - run: echo "$ARTIFACT_URL"
@@ -29,36 +27,65 @@ jobs:
           channel: slacktest
           event: always
           custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Your build has passed!",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Click the button to download your test results."
-                  },
-                  "accessory": {
-                    "type": "button",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Download Artifacts",
-                      "emoji": true
+           {
+                 "text": "CircleCI job succeeded!",
+                 "blocks": [
+                    {
+                       "type": "header",
+                       "text": {
+                          "type": "plain_text",
+                          "text": "Job Succeeded. :white_check_mark:",
+                          "emoji": true
+                       }
                     },
-                    "value": "artifacts_url",
-                    "url": "$ARTIFACT_URL",
-                    "action_id": "button-action"
-                  }
+                    {
+                       "type": "section",
+                       "fields": [
+                          {
+                             "type": "mrkdwn",
+                             "text": "*Job*: ${CIRCLE_JOB}"
+                          }
+                       ]
+                    },
+                    {
+                       "type": "section",
+                       "fields": [
+                          {
+                             "type": "mrkdwn",
+                             "text": "*Project*: $CIRCLE_PROJECT_REPONAME"
+                          },
+                          {
+                             "type": "mrkdwn",
+                             "text": "*Branch*: $CIRCLE_BRANCH"
+                                },
+                                {
+                             "type": "mrkdwn",
+                             "text": "*Commit*: $CIRCLE_SHA1"
+                          }
+                       ],
+                       "accessory": {
+                          "type": "image",
+                          "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                          "alt_text": "CircleCI logo"
+                       }
+                    },
+                          {
+                              "type": "actions",
+                              "elements": [{
+                              "type": "button",
+                              "text": {
+                                  "type": "plain_text",
+                                  "text": "View More",
+                                  "emoji": true
+                              },
+                              "value":  "view_job",
+                              "url":  "$ARTIFACT_URL"
+                          }
+                          ]
+                          }
+
+                 ]
                 }
-              ]
-            }
 
 workflows:
   send-notification:
