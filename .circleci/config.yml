@@ -21,6 +21,7 @@ jobs:
           destination: artifact-file
       - run:
          command: |
+         sleep 5s
           ARTIFACT=$(curl -X GET https://circleci.com/api/v1.1/project/bitbucket/ogii-test/slack-orb-template/$CIRCLE_BUILD_NUM/artifacts -H "circle-token: $CIRCLECI_TOKEN" | jq '.[0].url' )
           echo "export ARTIFACT_URL=$ARTIFACT" >> $BASH_ENV
       - run: echo "$ARTIFACT_URL"
