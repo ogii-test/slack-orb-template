@@ -1,0 +1,33 @@
+version: '2.1'
+ 
+orbs:
+  slack: circleci/slack@4.2.1
+
+jobs:
+  job1:
+    docker:
+      - image: 'cimg/base:2020.01'  
+    steps:
+      - checkout
+      - run:
+          command: |
+            echo 'export MY_ORB_TEMPLATE_PASS=$(jq .pass ./slack_template/templates.json)' >> $BASH_ENV
+            echo "$MY_ORB_TEMPLATE_PASS"
+      - run:
+          command: |
+            echo 'export MY_ORB_TEMPLATE_FAIL=$(jq .fail ./slack_template/templates.json)' >> $BASH_ENV
+            echo "$MY_ORB_TEMPLATE_FAIL"
+      - slack/notify:
+          channel: slacktest
+          event: pass
+          template: MY_ORB_TEMPLATE_PASS
+      - slack/notify:
+          channel: slacktest
+          event: fail
+          template: MY_ORB_TEMPLATE_FAIL
+          
+workflows:
+  send-notification:
+    jobs:
+      - job1:
+          context: slack-secrets
